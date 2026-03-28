@@ -1,50 +1,62 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
+
+const NAV_LINKS = [
+  { label: "Home", href: "#hero" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 export function Header() {
   const [visible, setVisible] = useState(true);
+  const [dark, setDark] = useState(true); // hero is dark, so start dark
   const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
+    const update = () => {
       const y = window.scrollY;
+
+      // Hide on scroll down, show on scroll up
       setVisible(y < 60 || y < lastY.current);
       lastY.current = y;
+
+      // Detect which section is currently behind the header
+      const sections = document.querySelectorAll<HTMLElement>("[data-header-theme]");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 0 && rect.bottom > 0) {
+          setDark(section.dataset.headerTheme === "dark");
+        }
+      });
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm transition-transform duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-transform duration-300 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-center px-6">
-        <NavigationMenu>
-          <NavigationMenuList className="gap-4">
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#hero" className="px-4 py-2">Home</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#projects" className="px-4 py-2">Projects</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#about" className="px-4 py-2">About</NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink href="#contact" className="px-4 py-2">Contact</NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav className="flex gap-8">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className={`text-xl transition-colors duration-500 hover:opacity-60 ${
+                dark ? "text-white" : "text-foreground"
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
       </div>
     </header>
   );
