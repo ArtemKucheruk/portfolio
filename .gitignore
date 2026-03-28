@@ -42,5 +42,5 @@ next-env.d.ts
 
 
 docs/*
-CLAUDE.mb
-PLAN.mb
+CLAUDE.md
+PLAN.md
