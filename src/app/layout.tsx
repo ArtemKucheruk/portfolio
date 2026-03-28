@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Afacad } from "next/font/google";
 import "./globals.css";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const afacad = Afacad({
+  variable: "--font-afacad",
   subsets: ["latin"],
 });
 
@@ -23,10 +24,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${afacad.variable} font-[family-name:var(--font-afacad)] antialiased`}
       >
+        <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
+          <div className="mx-auto flex h-24 max-w-5xl items-center justify-center px-6">
+            <NavigationMenu>
+              <NavigationMenuList className="gap-4">
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/" className="px-4 py-2">Home</NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/about" className="px-4 py-2">About</NavigationMenuLink>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        </header>
+
         {children}
       </body>
     </html>
