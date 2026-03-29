@@ -32,7 +32,7 @@ function SkillRow({
 }) {
   return (
     <motion.div
-      className="grid grid-cols-[180px_1fr] items-baseline gap-8 border-t border-border py-8"
+      className="grid grid-cols-1 items-baseline gap-2 border-t border-border py-8 md:grid-cols-[180px_1fr] md:gap-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
