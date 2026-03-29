@@ -36,24 +36,24 @@ export function Hero() {
       data-header-theme="dark"
       className="relative flex min-h-svh flex-col items-center justify-center bg-[oklch(0.11_0.008_260)] px-6"
     >
-      <div className="max-w-3xl w-full">
-        <div className="flex flex-col gap-4">
+      <div className="max-w-5xl w-full">
+        <div className="flex flex-col gap-2">
           <AnimatedLine
             delay={0.6}
-            className="block text-[clamp(3rem,10vw,7rem)] font-bold leading-none tracking-tight"
+            className="block text-[clamp(4rem,12vw,10rem)] font-bold leading-none tracking-tight"
           >
             Artem
           </AnimatedLine>
           <AnimatedLine
             delay={0.85}
-            className="block text-[clamp(3rem,10vw,7rem)] font-bold leading-none tracking-tight"
+            className="block text-[clamp(4rem,12vw,10rem)] font-bold leading-none tracking-tight"
           >
             Kucheruk
           </AnimatedLine>
         </div>
 
         <motion.p
-          className="mt-10 text-[clamp(1rem,2.5vw,1.375rem)] leading-relaxed"
+          className="mt-12 text-[clamp(1.125rem,2.5vw,1.625rem)] leading-relaxed"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }}

@@ -32,16 +32,16 @@ function SkillRow({
 }) {
   return (
     <motion.div
-      className="grid grid-cols-[140px_1fr] items-baseline gap-6 border-t border-border py-6"
+      className="grid grid-cols-[180px_1fr] items-baseline gap-8 border-t border-border py-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
     >
-      <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+      <span className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
         {category}
       </span>
-      <span className="text-xl leading-relaxed text-foreground">
+      <span className="text-3xl leading-relaxed text-foreground">
         {items.join("  ·  ")}
       </span>
     </motion.div>
@@ -55,7 +55,7 @@ export function Skills() {
       data-header-theme="light"
       className="flex min-h-svh items-center bg-secondary px-6 py-24"
     >
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-5xl">
         <motion.p
           className="mb-16 text-sm font-medium uppercase tracking-widest text-muted-foreground"
           initial={{ opacity: 0 }}
