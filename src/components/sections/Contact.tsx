@@ -20,21 +20,21 @@ function LinkedInIcon({ className }: { className?: string }) {
 const LINKS = [
   {
     label: "GitHub",
-    href: "https://github.com/placeholder",
+    href: "https://github.com/ArtemKucheruk",
     icon: GithubIcon,
-    handle: "@placeholder",
+    handle: "ArtemKucheruk",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/placeholder",
+    href: "https://www.linkedin.com/in/artem-kucheruk/",
     icon: LinkedInIcon,
-    handle: "placeholder",
+    handle: "Artem Kucheruk",
   },
   {
     label: "Email",
-    href: "mailto:placeholder@example.com",
+    href: "mailto:a.o.kucheruk@gmail.com",
     icon: Mail,
-    handle: "placeholder@example.com",
+    handle: "a.o.kucheruk@gmail.com",
   },
 ];
 
