@@ -1,28 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
   { label: "Home", href: "#hero" },
+  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
-  const [visible, setVisible] = useState(true);
-  const [dark, setDark] = useState(true); // hero is dark, so start dark
-  const lastY = useRef(0);
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     const update = () => {
-      const y = window.scrollY;
-
-      // Hide on scroll down, show on scroll up
-      setVisible(y < 60 || y < lastY.current);
-      lastY.current = y;
-
-      // Detect which section is currently behind the header
       const sections = document.querySelectorAll<HTMLElement>("[data-header-theme]");
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
@@ -38,18 +30,14 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-transform duration-300 ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+    <header className="fixed top-0 z-50 w-full">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-center px-6">
-        <nav className="flex gap-8">
+        <nav className="flex gap-4 md:gap-8">
           {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
               href={href}
-              className={`text-xl transition-colors duration-500 hover:opacity-60 ${
+              className={`text-sm transition-colors duration-500 hover:opacity-60 md:text-xl ${
                 dark ? "text-white" : "text-foreground"
               }`}
             >

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Afacad } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { ScrollController } from "@/components/ScrollController";
 
 const afacad = Afacad({
   variable: "--font-afacad",
@@ -24,6 +25,7 @@ export default function RootLayout({
         className={`${afacad.variable} font-[family-name:var(--font-afacad)] antialiased overflow-x-hidden`}
       >
         <Header />
+        <ScrollController />
         {children}
       </body>
     </html>
