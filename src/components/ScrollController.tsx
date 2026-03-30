@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 
 const SECTIONS = ["hero", "skills", "projects", "about", "contact"];
-const DURATION = 1100; // ms — tune this to taste
-const TOUCH_THRESHOLD = 40; // px swipe needed to trigger
+const DURATION = 1100;
+const TOUCH_THRESHOLD = 40;
+const BOUNDARY_TOLERANCE = 8; // px — how close to edge before triggering next section
 
-// Cubic ease-in-out — slow start, fast middle, slow end
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
@@ -30,27 +30,21 @@ function scrollToY(target: number, duration: number, onDone: () => void) {
   requestAnimationFrame(step);
 }
 
-function getNearestSectionIndex(): number {
-  let nearest = 0;
-  let minDist = Infinity;
-  SECTIONS.forEach((id, i) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const dist = Math.abs(el.getBoundingClientRect().top);
-    if (dist < minDist) {
-      minDist = dist;
-      nearest = i;
-    }
-  });
-  return nearest;
+function getCurrentSectionIndex(): number {
+  // The current section is the last one whose top edge has scrolled at or above the viewport top
+  for (let i = SECTIONS.length - 1; i >= 0; i--) {
+    const el = document.getElementById(SECTIONS[i]);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= 1) return i;
+  }
+  return 0;
 }
 
 export function ScrollController() {
   const locked = useRef(false);
 
   const goTo = (index: number) => {
-    const id = SECTIONS[index];
-    const el = document.getElementById(id);
+    const el = document.getElementById(SECTIONS[index]);
     if (!el || locked.current) return;
     const target = el.getBoundingClientRect().top + window.scrollY;
     locked.current = true;
@@ -61,10 +55,31 @@ export function ScrollController() {
 
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
+      if (locked.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const current = getCurrentSectionIndex();
+      const el = document.getElementById(SECTIONS[current]);
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const sectionHeight = el.offsetHeight;
+      const vh = window.innerHeight;
+      const goingDown = e.deltaY > 0;
+
+      // For sections taller than the viewport, allow natural scroll
+      // until the user reaches the top or bottom boundary
+      if (sectionHeight > vh) {
+        const atTop = rect.top >= -BOUNDARY_TOLERANCE;
+        const atBottom = rect.bottom <= vh + BOUNDARY_TOLERANCE;
+        if (goingDown && !atBottom) return;
+        if (!goingDown && !atTop) return;
+      }
+
       e.preventDefault();
-      if (locked.current) return;
-      const current = getNearestSectionIndex();
-      const dir = e.deltaY > 0 ? 1 : -1;
+      const dir = goingDown ? 1 : -1;
       const next = Math.max(0, Math.min(SECTIONS.length - 1, current + dir));
       if (next !== current) goTo(next);
     };
@@ -77,8 +92,23 @@ export function ScrollController() {
       if (locked.current) return;
       const delta = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(delta) < TOUCH_THRESHOLD) return;
-      const current = getNearestSectionIndex();
-      const dir = delta > 0 ? 1 : -1;
+      const current = getCurrentSectionIndex();
+      const el = document.getElementById(SECTIONS[current]);
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const sectionHeight = el.offsetHeight;
+      const vh = window.innerHeight;
+      const goingDown = delta > 0;
+
+      if (sectionHeight > vh) {
+        const atTop = rect.top >= -BOUNDARY_TOLERANCE;
+        const atBottom = rect.bottom <= vh + BOUNDARY_TOLERANCE;
+        if (goingDown && !atBottom) return;
+        if (!goingDown && !atTop) return;
+      }
+
+      const dir = goingDown ? 1 : -1;
       const next = Math.max(0, Math.min(SECTIONS.length - 1, current + dir));
       if (next !== current) goTo(next);
     };

@@ -37,6 +37,21 @@ export function Hero() {
       className="relative flex min-h-svh flex-col items-center justify-center bg-[oklch(0.11_0.008_260)] px-6"
     >
       <div className="max-w-5xl w-full">
+        <motion.p
+          className="mb-6 text-[clamp(0.875rem,1.5vw,1.125rem)] font-medium tracking-widest uppercase"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+        >
+          <motion.span
+            initial={{ color: "oklch(0.28 0 0)" }}
+            animate={{ color: "oklch(0.48 0.008 260)" }}
+            transition={{ duration: 1.1, delay: 0.4, ease: "easeOut" }}
+          >
+            Hello, welcome to my portfolio
+          </motion.span>
+        </motion.p>
+
         <div className="flex flex-col gap-2">
           <AnimatedLine
             delay={0.6}
@@ -63,7 +78,7 @@ export function Hero() {
             animate={{ color: "oklch(0.58 0.008 260)" }}
             transition={{ duration: 1.2, delay: 1.8, ease: "easeOut" }}
           >
-            I build systems that run in the dark.
+            Backend engineer · Infrastructure · Security
           </motion.span>
         </motion.p>
       </div>
