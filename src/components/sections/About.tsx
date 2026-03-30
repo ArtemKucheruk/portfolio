@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 import { Download, ExternalLink } from "lucide-react";
 
 const FACTS = [
-  { value: "2019", label: "First production code" },
-  { value: "5+", label: "Years of backend engineering" },
+  { value: "2023", label: "First production code" },
+  { value: "6+", label: "Years of programming" },
   { value: "3", label: "Primary languages" },
-  { value: "0", label: "Managed cloud dependencies" },
+  { value: "3", label: "Activly managing servers" },
 ];
 
 const AMBITIONS = [

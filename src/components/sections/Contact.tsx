@@ -104,7 +104,7 @@ export function Contact() {
       >
         <div className="flex items-center justify-between border-t border-border pt-8 text-sm text-muted-foreground">
           <span>Artem Kucheruk</span>
-          <span>Built with Next.js</span>
+          <span>© {new Date().getFullYear()} All rights reserved.</span>
         </div>
       </motion.div>
     </section>

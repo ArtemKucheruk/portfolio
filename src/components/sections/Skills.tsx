@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 
 const SKILLS = [
-  { category: "Languages", items: ["Python", "Go", "JavaScript"] },
+  { category: "Languages", items: ["Python", "Go", "JavaScript", "Java", "Lua"] },
   { category: "Frameworks", items: ["FastAPI", "Flask", "Django", "Echo", "Express"] },
   { category: "Automation", items: ["Selenium", "Playwright"] },
   { category: "Infrastructure", items: ["Bare metal", "Linux", "DevOps", "Security"] },
@@ -13,6 +13,8 @@ const INTERESTS = [
   "Self-hosted home servers",
   "CTF challenges",
   "Reading security research",
+  "Reading",
+  "Economics",
 ];
 
 function SkillRow({
