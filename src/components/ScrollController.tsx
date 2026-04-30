@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const SECTIONS = ["hero", "skills", "projects", "about", "contact"];
+const SECTIONS = ["hero", "about", "skills", "projects", "contact"];
 const DURATION = 1100;
 const TOUCH_THRESHOLD = 40;
 const BOUNDARY_TOLERANCE = 8; // px — how close to edge before triggering next section
