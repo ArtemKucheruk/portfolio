@@ -8,7 +8,7 @@ const PROFILE = {
   name: "Artem Kucheruk",
   username: "ArtemKucheruk",
   bio: "Backend engineer. Building secure systems and the infrastructure behind them.",
-  location: "Somewhere, Earth",
+  location: "Belgium",
   website: "github.com/ArtemKucheruk",
   followers: 42,
   following: 18,
