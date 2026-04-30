@@ -25,12 +25,11 @@ const LANG_COLORS: Record<string, string> = {
 
 const PROJECTS = [
   {
-    name: "http-gateway",
-    description:
-      "High-performance API gateway built with Go and Echo. Handles routing, rate-limiting, and auth middleware.",
-    language: "Go",
-    stars: 128,
-    forks: 12,
+    name: "portfolio",
+    description: "Personal portfolio website.",
+    language: "TypeScript",
+    stars: 0,
+    forks: 0,
   },
   {
     name: "fastapi-boilerplate",
@@ -72,6 +71,20 @@ const PROJECTS = [
     stars: 21,
     forks: 3,
   },
+  {
+    name: "AirDefenseIOT",
+    description: "AirDefenceIOT",
+    language: "Python",
+    stars: 0,
+    forks: 0,
+  },
+  {
+    name: "detect_violation_safety",
+    description: "detect_violation_safety",
+    language: "Python",
+    stars: 0,
+    forks: 0,
+  },
 ];
 
 function ProjectCard({
@@ -83,7 +96,10 @@ function ProjectCard({
 }) {
   const color = LANG_COLORS[project.language] ?? "#888";
   return (
-    <motion.div
+    <motion.a
+      href={`https://github.com/${PROFILE.username}/${project.name}`}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex flex-col gap-5 rounded-2xl border border-white/8 bg-white/4 p-9"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +135,7 @@ function ProjectCard({
           {project.forks}
         </span>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
