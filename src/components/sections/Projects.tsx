@@ -21,6 +21,7 @@ const LANG_COLORS: Record<string, string> = {
   JavaScript: "#F7DF1E",
   TypeScript: "#3178C6",
   Shell: "#89E051",
+  Lua: "#000080",
 };
 
 const PROJECTS = [
@@ -32,44 +33,11 @@ const PROJECTS = [
     forks: 0,
   },
   {
-    name: "fastapi-boilerplate",
-    description:
-      "Production-ready FastAPI template with async SQLAlchemy, JWT auth, and Docker Compose setup.",
-    language: "Python",
-    stars: 94,
-    forks: 31,
-  },
-  {
-    name: "scrape-engine",
-    description:
-      "Distributed web scraping engine using Playwright and asyncio. Bypasses common bot-detection patterns.",
-    language: "Python",
-    stars: 57,
-    forks: 8,
-  },
-  {
-    name: "deploy-scripts",
-    description:
-      "Shell scripts and Ansible playbooks for provisioning and deploying services on bare-metal Linux servers.",
-    language: "Shell",
-    stars: 33,
-    forks: 5,
-  },
-  {
-    name: "auth-service",
-    description:
-      "Standalone OAuth2 / OpenID Connect service written in Go with PKCE support and refresh token rotation.",
-    language: "Go",
-    stars: 76,
-    forks: 14,
-  },
-  {
-    name: "js-toolbox",
-    description:
-      "Collection of lightweight Express middlewares and utility functions used across internal projects.",
-    language: "JavaScript",
-    stars: 21,
-    forks: 3,
+    name: "nvim-conf",
+    description: "nvim-config",
+    language: "Lua",
+    stars: 0,
+    forks: 0,
   },
   {
     name: "AirDefenseIOT",
