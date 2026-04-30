@@ -36,10 +36,9 @@ const HISTORY = [
 ];
 
 const AMBITIONS = [
-  "Design distributed systems at scale",
-  "Contribute to open-source security tooling",
-  "Build infrastructure that runs itself",
-  "Work at the intersection of backend and security",
+  "I want to work on infrastructure that other engineers depend on without thinking about it — the kind of software that just runs, quietly and correctly, at scale.",
+  "Security is where I keep returning. I want to turn that instinct into deep expertise in distributed systems security — shaping how teams think about trust boundaries from day one, not as an afterthought.",
+  "Longer term, I want to contribute to the tools developers actually use: open-source runtimes, protocol implementations, the unglamorous plumbing that makes modern software possible.",
 ];
 
 function FadeIn({
@@ -103,14 +102,13 @@ export function History() {
             <p className="mb-5 text-sm font-medium uppercase tracking-widest text-muted-foreground">
               Dreams &amp; ambitions
             </p>
-            <ul className="flex flex-col gap-4">
-              {AMBITIONS.map((ambition) => (
-                <li key={ambition} className="flex items-start gap-3 text-xl text-foreground">
-                  <span className="mt-2.5 size-2 shrink-0 rounded-full bg-muted-foreground" />
-                  {ambition}
-                </li>
+            <div className="flex flex-col gap-5">
+              {AMBITIONS.map((paragraph, i) => (
+                <p key={i} className="text-base leading-relaxed text-foreground">
+                  {paragraph}
+                </p>
               ))}
-            </ul>
+            </div>
           </FadeIn>
         </div>
       </div>
