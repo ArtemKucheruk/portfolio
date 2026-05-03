@@ -64,7 +64,7 @@ export function About() {
 
             <FadeIn delay={0.1}>
               <p className="text-lg leading-relaxed text-foreground">
-                I started writing code at sixteen and never really stopped. Over
+                I started writing code at thirteen and never really stopped. Over
                 time I gravitated toward the parts of the stack most people ignore
                 — systems, infrastructure, the security layer. I work primarily in
                 Python, Go, and JavaScript, building backends that need to be fast,
