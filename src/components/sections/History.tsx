@@ -4,34 +4,28 @@ import { motion } from "motion/react";
 
 const HISTORY = [
   {
-    period: "2020 – 2023",
-    role: "Student",
-    place: "Programming Academy",
-    description: "Three years of structured programming education — foundations, algorithms, and applied problem solving.",
+    period: "Sep 2020 – Jun 2023",
+    role: "Foundational IT Program",
+    place: "IT STEP Academy",
+    description: "16-subject program — Python programming, web design (HTML/CSS), Arduino, game development on Unity.",
   },
   {
-    period: "2022 – 2024",
-    role: "Software Developer",
-    place: "College",
-    description: "Two-year programme — algorithms, databases, and system design.",
+    period: "Sep 2022 – Jun 2024",
+    role: "Software Development",
+    place: "IT STEP College",
+    description: "Python application & web development, OOP, software methodology, theory of algorithms.",
   },
   {
-    period: "Aug 2024 – 2025",
-    role: "Software Developer",
-    place: "Company",
-    description: "Backend services, APIs, and internal tooling in production.",
+    period: "Aug 2024 – Present",
+    role: "Lead Software Engineer → Technical Director → VP of Engineering",
+    place: "Elladium Holding Ltd.",
+    description: "Remote. Backend services, REST & GraphQL APIs, and cloud-native infrastructure in production.",
   },
   {
-    period: "2024 – Present",
-    role: "Student",
-    place: "University",
-    description: "Degree alongside professional work — computer science and engineering.",
-  },
-  {
-    period: "2025 – Present",
-    role: "Lead Developer",
-    place: "Company",
-    description: "Architecture decisions, mentoring, and driving delivery.",
+    period: "Sep 2024 – Jun 2027",
+    role: "Bachelor's, Applied Computer Science",
+    place: "Thomas More University of Applied Sciences",
+    description: "Backend & full-stack: Python, JavaScript, PHP, operating systems, Cloud & DevOps — Geel, Belgium.",
   },
 ];
 
