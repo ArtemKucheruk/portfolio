@@ -2,19 +2,23 @@
 
 import { motion } from "motion/react";
 
-const SKILLS = [
-  { category: "Languages", items: ["Python", "Go", "JavaScript", "Java", "Lua"] },
-  { category: "Frameworks", items: ["FastAPI", "Flask", "Django", "Echo", "Express"] },
-  { category: "Automation", items: ["Selenium", "Playwright"] },
-  { category: "Infrastructure", items: ["Bare metal", "Linux", "DevOps", "Security"] },
+const TECHNICAL_SKILLS = [
+  { category: "Languages", items: ["Python", "Go", "Java", "C#", "C++", "C", "Rust", "Lua"] },
+  { category: "APIs", items: ["REST", "GraphQL", "WebSockets", "Webhooks", "ASP.NET Core"] },
+  { category: "Databases", items: ["PostgreSQL", "SQLite", "MongoDB", "Firebase", "Redis", "Valkey", "EF Core"] },
+  { category: "DevOps", items: ["Docker", "Docker Compose", "Docker Swarm", "Linux", "Prometheus", "Grafana"] },
+];
+
+const SOFT_SKILLS = [
+  { category: "Workflow", items: ["Agile", "Jira", "Git / GitHub"] },
+  { category: "Languages", items: ["Ukrainian (native)", "English (C1)", "Dutch (A1)"] },
 ];
 
 const INTERESTS = [
   "Self-hosted home servers",
-  "CTF challenges",
+  "Competitive gymnastics — 12 years",
+  "International volunteering",
   "Reading security research",
-  "Reading",
-  "Economics",
 ];
 
 function SkillRow({
@@ -28,7 +32,7 @@ function SkillRow({
 }) {
   return (
     <motion.div
-      className="grid grid-cols-[140px_1fr] items-baseline gap-6 border-t border-border py-6"
+      className="grid grid-cols-[110px_1fr] items-baseline gap-4 border-t border-border py-5"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -37,7 +41,7 @@ function SkillRow({
       <span className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
         {category}
       </span>
-      <span className="text-2xl leading-relaxed text-foreground">
+      <span className="text-xl leading-relaxed text-foreground">
         {items.join("  ·  ")}
       </span>
     </motion.div>
@@ -49,7 +53,7 @@ export function Skills() {
     <section
       id="skills"
       data-header-theme="light"
-      className="flex h-svh items-center bg-secondary px-6 py-20"
+      className="flex min-h-svh items-center bg-secondary px-6 py-20"
     >
       <div className="mx-auto w-full max-w-5xl">
         <motion.p
@@ -62,28 +66,46 @@ export function Skills() {
           The stack
         </motion.p>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_260px]">
-          {/* Skills */}
-          <div>
-            {SKILLS.map((group, i) => (
-              <SkillRow
-                key={group.category}
-                category={group.category}
-                items={group.items}
-                delay={i * 0.08}
-              />
-            ))}
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_260px]">
+          {/* Technical + Soft — left */}
+          <div className="flex flex-col gap-16">
+            <div>
+              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground/50">
+                Technical
+              </p>
+              {TECHNICAL_SKILLS.map((group, i) => (
+                <SkillRow
+                  key={group.category}
+                  category={group.category}
+                  items={group.items}
+                  delay={i * 0.08}
+                />
+              ))}
+            </div>
+
+            <div>
+              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground/50">
+                Soft
+              </p>
+              {SOFT_SKILLS.map((group, i) => (
+                <SkillRow
+                  key={group.category}
+                  category={group.category}
+                  items={group.items}
+                  delay={i * 0.08}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Interests */}
+          {/* Interests — right */}
           <motion.div
-            className="border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: 0.35, ease: "easeOut" }}
+            transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
           >
-            <p className="mb-6 text-sm font-medium uppercase tracking-widest text-muted-foreground">
+            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-muted-foreground/50">
               Interests
             </p>
             <ul className="flex flex-col gap-4">
