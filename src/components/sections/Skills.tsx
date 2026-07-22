@@ -3,16 +3,16 @@
 import { motion } from "motion/react";
 
 const TECHNICAL_SKILLS = [
-  { category: "Languages", items: ["Python", "Go", "JavaScript", "Java", "Lua"] },
-  { category: "Frameworks", items: ["FastAPI", "Flask", "Django", "Echo", "Express"] },
-  { category: "Automation", items: ["Selenium", "Playwright"] },
-  { category: "Infrastructure", items: ["Bare metal", "Linux", "DevOps", "Security"] },
+  { category: "Languages", items: ["Python", "Go", "Java", "C#", "C++", "C", "Rust", "Lua"] },
+  { category: "APIs", items: ["REST", "GraphQL", "WebSockets", "Webhooks", "ASP.NET Core"] },
+  { category: "Data", items: ["PostgreSQL", "SQLite", "MongoDB", "Firebase", "Redis", "Valkey", "EF Core"] },
+  { category: "Infrastructure", items: ["Docker", "Docker Compose", "Docker Swarm", "Linux", "Prometheus", "Grafana"] },
 ];
 
 const SOFT_SKILLS = [
   { category: "Collaboration", items: ["Team lead", "Mentoring", "Code review"] },
-  { category: "Communication", items: ["Technical writing", "Presentation"] },
-  { category: "Mindset", items: ["Problem solving", "Self-learning", "Adaptability"] },
+  { category: "Workflow", items: ["Agile", "Jira", "Git / GitHub"] },
+  { category: "Languages", items: ["Ukrainian (native)", "English (C1)", "Dutch (A1)" ]},
 ];
 
 const INTERESTS = [

@@ -6,32 +6,26 @@ const HISTORY = [
   {
     period: "2020 – 2023",
     role: "Student",
-    place: "Programming Academy",
-    description: "Three years of structured programming education — foundations, algorithms, and applied problem solving.",
+    place: "IT STEP Academy, Kyiv",
+    description: "Foundational IT program — Python programming, web design (HTML/CSS), Arduino, game development on Unity.",
   },
   {
     period: "2022 – 2024",
-    role: "Software Developer",
-    place: "College",
-    description: "Two-year programme — algorithms, databases, and system design.",
+    role: "Student",
+    place: "IT STEP College, Kyiv",
+    description: "Professional education, Software Development — Python application & web development, OOP, software methodology, theory of algorithms.",
   },
   {
-    period: "Aug 2024 – 2025",
-    role: "Software Developer",
-    place: "Company",
-    description: "Backend services, APIs, and internal tooling in production.",
+    period: "Aug 2024 – Present",
+    role: "Lead Software Engineer → Technical Director → VP of Engineering",
+    place: "Elladium Holding Ltd. · Remote",
+    description: "Backend services, APIs, and infrastructure in production — architecture decisions, mentoring, and driving delivery.",
   },
   {
     period: "2024 – Present",
     role: "Student",
-    place: "University",
-    description: "Degree alongside professional work — computer science and engineering.",
-  },
-  {
-    period: "2025 – Present",
-    role: "Lead Developer",
-    place: "Company",
-    description: "Architecture decisions, mentoring, and driving delivery.",
+    place: "Thomas More University of Applied Sciences, Geel",
+    description: "Bachelor's degree, Applied Computer Science — backend & full-stack, operating systems, Cloud & DevOps.",
   },
 ];
 
