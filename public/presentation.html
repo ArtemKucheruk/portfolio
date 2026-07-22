@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Artem Kucheruk — Presentation</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-dark:    #0e0f14;
+    --bg-light:   #f5f4f0;
+    --accent:     #c8b89a;
+    --muted:      #6b6b6b;
+    --font:       'Inter', system-ui, sans-serif;
+  }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg-dark);
+    color: #e8e6e0;
+  }
+
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 8vw, 6rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── Themes ── */
+  .dark  { background: var(--bg-dark);  color: #e8e6e0; }
+  .light { background: var(--bg-light); color: #1a1a1a; }
+  .light .label, .light .muted { color: #888; }
+  .light .divider { background: #ccc; }
+  .light .tag { background: #e0ddd8; color: #333; }
+
+  /* ── Typography ── */
+  .label {
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--accent);
+    margin-top: 1.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .muted { color: var(--muted); }
+
+  /* ── Grid layouts ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  /* ── Stat block ── */
+  .stat { display: flex; flex-direction: column; gap: 0.3rem; }
+  .stat-val {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .stat-lbl {
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── Timeline ── */
+  .timeline { display: flex; flex-direction: column; gap: 1.4rem; }
+  .tl-item { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; align-items: baseline; }
+  .tl-period {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .tl-role  { font-size: clamp(0.95rem, 1.8vw, 1.15rem); font-weight: 600; }
+  .tl-place { font-weight: 400; color: var(--muted); }
+
+  /* ── Skill rows ── */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0.9rem 0;
+  }
+  .light .skill-row { border-top-color: rgba(0,0,0,0.1); }
+  .skill-cat {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .skill-items { font-size: clamp(0.95rem, 1.8vw, 1.2rem); }
+
+  /* ── Tags ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .tag {
+    background: rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 0.3rem 0.75rem;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+  }
+
+  /* ── Blockquote ── */
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+  }
+  blockquote + blockquote { margin-top: 1.5rem; }
+
+  /* ── Divider ── */
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 1.5rem 0;
+  }
+
+  /* ── Nav ── */
+  .nav {
+    position: fixed;
+    bottom: 2rem;
+    right: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    z-index: 10;
+  }
+  .nav-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    width: 2.2rem; height: 2.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .nav-counter {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .progress {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 1. Cover -->
+  <div class="slide dark active">
+    <p class="label">Portfolio · 2026</p>
+    <h1>Artem<br>Kucheruk</h1>
+    <p class="subtitle">Backend · Infrastructure · Security</p>
+  </div>
+
+  <!-- 2. Who I Am -->
+  <div class="slide light">
+    <p class="label">About</p>
+    <h2>Built on curiosity.</h2>
+    <p style="font-size: clamp(1rem,2vw,1.25rem); line-height:1.7; max-width:680px;">
+      Started coding at <strong>13</strong>. Gravitated toward the parts most people ignore —
+      systems, infrastructure, the security layer. I want to understand all of it,
+      down to the OS and the network stack.
+    </p>
+    <div class="divider"></div>
+    <div class="grid-3" style="max-width:540px; margin-top:0.5rem;">
+      <div class="stat"><span class="stat-val">6+</span><span class="stat-lbl">Years coding</span></div>
+      <div class="stat"><span class="stat-val">3</span><span class="stat-lbl">Primary langs</span></div>
+      <div class="stat"><span class="stat-val">3</span><span class="stat-lbl">Servers managed</span></div>
+    </div>
+  </div>
+
+  <!-- 3. Education -->
+  <div class="slide dark">
+    <p class="label">Education</p>
+    <h2>Learning path.</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-period">2020 – 2023</span>
+        <span class="tl-role">Student <span class="tl-place">· Programming Academy</span></span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">2022 – 2024</span>
+        <span class="tl-role">Software Developer <span class="tl-place">· College</span></span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">2024 – now</span>
+        <span class="tl-role">Student <span class="tl-place">· University — CS &amp; Engineering</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Experience -->
+  <div class="slide dark">
+    <p class="label">Experience</p>
+    <h2>From engineer<br>to lead.</h2>
+    <div class="timeline" style="margin-top:0.5rem;">
+      <div class="tl-item">
+        <span class="tl-period">Aug 2024 – 2025</span>
+        <span class="tl-role">Software Developer <span class="tl-place">· Backend, APIs, internal tooling</span></span>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">2025 – now</span>
+        <span class="tl-role">Lead Developer <span class="tl-place">· Architecture, mentoring, delivery</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Skills -->
+  <div class="slide light">
+    <p class="label">The Stack</p>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#aaa;margin-bottom:0.5rem;">Technical</p>
+        <div class="skill-row"><span class="skill-cat">Languages</span><span class="skill-items">Python · Go · JavaScript · Java · Lua</span></div>
+        <div class="skill-row"><span class="skill-cat">Frameworks</span><span class="skill-items">FastAPI · Flask · Django · Echo · Express</span></div>
+        <div class="skill-row"><span class="skill-cat">Automation</span><span class="skill-items">Selenium · Playwright</span></div>
+        <div class="skill-row"><span class="skill-cat">Infra</span><span class="skill-items">Bare metal · Linux · DevOps · Security</span></div>
+      </div>
+      <div>
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#aaa;margin-bottom:0.5rem;">Soft skills</p>
+        <div class="skill-row"><span class="skill-cat">Collab</span><span class="skill-items">Team lead · Mentoring · Code review</span></div>
+        <div class="skill-row"><span class="skill-cat">Comms</span><span class="skill-items">Technical writing · Presentation</span></div>
+        <div class="skill-row"><span class="skill-cat">Mindset</span><span class="skill-items">Problem solving · Self-learning · Adaptability</span></div>
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#aaa;margin:1.5rem 0 0.5rem;">Interests</p>
+        <div class="tags">
+          <span class="tag">Self-hosted servers</span>
+          <span class="tag">CTF challenges</span>
+          <span class="tag">Security research</span>
+          <span class="tag">Economics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Motivation -->
+  <div class="slide dark">
+    <p class="label">Motivation</p>
+    <h2>What drives me.</h2>
+    <blockquote>
+      Infrastructure other engineers depend on — the kind that just runs, quietly and correctly, at scale.
+    </blockquote>
+    <blockquote>
+      Deep expertise in distributed systems security — shaping how teams think about trust from day one.
+    </blockquote>
+    <blockquote>
+      Contribute to open-source runtimes and protocol implementations — the unglamorous plumbing that makes modern software possible.
+    </blockquote>
+  </div>
+
+  <!-- 7. End -->
+  <div class="slide dark" style="align-items:center; text-align:center;">
+    <p class="label">Thank you</p>
+    <h1 style="font-size:clamp(2rem,7vw,6rem);">Let's build<br>something.</h1>
+    <p class="subtitle" style="margin-top:1.5rem;">a.o.kucheruk@gmail.com</p>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" id="prev">&#8592;</button>
+  <span class="nav-counter" id="counter">1 / 7</span>
+  <button class="nav-btn" id="next">&#8594;</button>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function go(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+  }
+
+  document.getElementById('next').onclick = () => go(current + 1);
+  document.getElementById('prev').onclick = () => go(current - 1);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') go(current + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                     go(current - 1);
+  });
+
+  go(0);
+</script>
+</body>
+</html>
