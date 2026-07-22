@@ -14,6 +14,9 @@ bun dev
 ```
 
 
+production
+
+
 
 
 
