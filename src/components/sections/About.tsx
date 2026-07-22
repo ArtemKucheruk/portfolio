@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Download, ExternalLink } from "lucide-react";
 
 const FACTS = [
-  { value: "2025", label: "First production code" },
+  { value: "2024", label: "First production code" },
   { value: "6+", label: "Years of programming" },
   { value: "3", label: "Primary languages" },
   { value: "3", label: "Activly managing servers" },
@@ -98,7 +98,7 @@ export function About() {
 
                 <div className="flex items-center gap-3">
                   <a
-                    href="/files/cv/Artem_Kucheruk_CV.pdf"
+                    href="/files/cv/ArtemKucheruk_CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 rounded-lg border border-border bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-80"
@@ -107,7 +107,7 @@ export function About() {
                     View CV
                   </a>
                   <a
-                    href="/files/cv/Artem_Kucheruk_CV.pdf"
+                    href="/files/cv/ArtemKucheruk_CV.pdf"
                     download
                     className="flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-opacity hover:opacity-60"
                   >
