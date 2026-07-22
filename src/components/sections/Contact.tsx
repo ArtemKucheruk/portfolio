@@ -47,7 +47,7 @@ export function Contact() {
     >
       <div className="mx-auto w-full max-w-5xl">
         <motion.p
-          className="mb-16 text-sm font-medium uppercase tracking-widest text-muted-foreground"
+          className="mb-16 text-center text-sm font-medium uppercase tracking-widest text-muted-foreground"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -57,7 +57,7 @@ export function Contact() {
         </motion.p>
 
         <motion.h2
-          className="text-[clamp(2.5rem,7vw,6rem)] font-bold leading-none tracking-tight text-foreground"
+          className="text-center text-[clamp(2.5rem,7vw,6rem)] font-bold leading-none tracking-tight text-foreground"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

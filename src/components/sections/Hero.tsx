@@ -45,7 +45,7 @@ export function Hero() {
         >
           <motion.span
             initial={{ color: "oklch(0.28 0 0)" }}
-            animate={{ color: "oklch(0.48 0.008 260)" }}
+            animate={{ color: "oklch(0.68 0.008 260)" }}
             transition={{ duration: 1.1, delay: 0.4, ease: "easeOut" }}
           >
             Hello, welcome to my portfolio
@@ -68,14 +68,14 @@ export function Hero() {
         </div>
 
         <motion.p
-          className="mt-12 text-[clamp(1.125rem,2.5vw,1.625rem)] leading-relaxed"
+          className="mt-12 text-[clamp(1.5rem,3.5vw,2.25rem)] leading-relaxed"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }}
         >
           <motion.span
             initial={{ color: "oklch(0.32 0 0)" }}
-            animate={{ color: "oklch(0.58 0.008 260)" }}
+            animate={{ color: "oklch(0.72 0.008 260)" }}
             transition={{ duration: 1.2, delay: 1.8, ease: "easeOut" }}
           >
             Backend engineer · Infrastructure · Security
