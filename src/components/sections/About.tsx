@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Download, ExternalLink } from "lucide-react";
 
 const FACTS = [
-  { value: "2020", label: "First production code" },
+  { value: "2025", label: "First production code" },
   { value: "6+", label: "Years of programming" },
   { value: "4", label: "Primary languages" },
   { value: "2", label: "Actively managing servers" },
