@@ -78,7 +78,7 @@ export function Hero() {
             animate={{ color: "oklch(0.72 0.008 260)" }}
             transition={{ duration: 1.2, delay: 1.8, ease: "easeOut" }}
           >
-            Backend engineer · Infrastructure · Security
+            Backend Software Developer · Python & Go
           </motion.span>
         </motion.p>
       </div>
